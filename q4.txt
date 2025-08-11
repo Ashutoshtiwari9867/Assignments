@@ -1,0 +1,52 @@
+Gist Overview
+
+Language: C
+
+Purpose: Simple console calculator with four operations: Addition, Subtraction, Multiplication, Division.
+
+Structure: Single file, procedural code, switch statement based on menu choice, input via scanf, output via printf.
+
+Execution: Program runs once per execution — no loops or persistent session.
+
+Observed Flow
+
+Prints menu with 4 choices.
+
+Reads an integer choice (menu).
+
+For choices 1–4: prompts for two floats, performs the chosen arithmetic, prints the result.
+
+For any other input: prints error message.
+
+Terminates immediately after one calculation.
+
+Issues & Risks
+
+No Input Validation: Does not check scanf return values; invalid input can cause undefined behavior.
+
+Division by Zero: No handling when second number is zero.
+
+Hidden/Bidirectional Unicode: File contains potentially dangerous invisible characters (“Trojan Source” risk).
+
+Poor User Experience: No loop to perform multiple calculations, no retry on invalid input, minimal feedback.
+
+Reverse-Engineered Behavior Notes
+
+Control logic is linear; no function decomposition.
+
+Data flow is simple: menu → inputs → computation → output → exit.
+
+No external libraries or dependencies beyond the C standard library.
+
+Recommendations
+
+Input Safety: Replace scanf with fgets + strtod/strtol, validate every user entry.
+
+Error Handling: Add explicit check before division; handle parsing errors gracefully.
+
+Looping Menu: Allow repeated operations until user chooses to quit.
+
+Security Hygiene: Strip or highlight hidden Unicode characters before compilation.
+
+Code Structure: Modularize into functions (e.g., read_double, do_add, etc.) to improve maintainability and testability.
+
